@@ -3,81 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vegas / SEMA 2026, Nov 5 to 8</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap">
+<title>Cuco's 60th Birthday Plan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@600;800&family=Barlow:ital,wght@0,400;0,600;1,400;1,700&family=Bodoni+Moda:wght@700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
+/* Layout: one narrow column, type-led hero, rotor badges mark the booking order.
+   Palette from the family photo: espresso door, mint wall, brass hardware. Deliberately one dark look. */
 :root{
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#F3EBDD; --ink:#1E2238; --muted:#5C5F72; --rust:#B4502A; --rust-dark:#8E3C1E;
-  --amber:#E9A83A; --line:#D9CDB8; --card:#FBF7EE; --ok:#2E7D4F;
+  color-scheme:dark;
+  --bg:#16110E;      /* espresso door */
+  --panel:#211A15;
+  --line:#3B3029;
+  --fg:#F3EFE8;
+  --muted:#B8AEA2;
+  --mint:#9FD9BF;    /* the wall */
+  --mint-deep:#7CC4A4;
+  --brass:#E8A93C;   /* door hardware */
+  --on-mint:#13201A;
+  --display:"Saira Extra Condensed","Barlow Condensed",Impact,sans-serif;
+  --body:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gold-hi:#F6DC8A;
+  --gold:#C9973A;
+  --gold-lo:#7C5519;
+  --enamel:#0A0908;
+  --serif:"Bodoni Moda",Didot,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#171A2B; --ink:#F3EBDD; --muted:#B3B0C2; --line:#2F3350; --card:#20243A; --rust:#D9693F; --rust-dark:#B4502A;
-}}
-:root[data-theme="dark"]{ --bg:#171A2B; --ink:#F3EBDD; --muted:#B3B0C2; --line:#2F3350; --card:#20243A; --rust:#D9693F; --rust-dark:#B4502A; }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.5}
-main{max-width:640px;margin:0 auto;padding:0 20px 64px}
-h1,h2,h3{font-family:"Barlow Condensed",Barlow,Impact,sans-serif;line-height:1;margin:0}
-.hero{padding:40px 0 24px;border-bottom:3px solid var(--ink)}
-.hero h1{font-size:clamp(52px,14vw,88px);font-weight:800;letter-spacing:-.01em}
-.hero p{margin:12px 0 0;font-size:19px;max-width:30em}
-.dates{display:inline-block;margin-top:14px;padding:6px 12px;background:var(--amber);color:#1E2238;font-family:"Barlow Condensed";font-weight:800;font-size:20px;letter-spacing:.01em}
-section{padding:28px 0;border-bottom:1px solid var(--line)}
-.step{display:flex;gap:14px;align-items:baseline}
-.num{font-family:"Barlow Condensed";font-weight:800;font-size:44px;color:var(--rust);line-height:1;min-width:40px}
-h2{font-size:34px;font-weight:800}
-.lead{margin:10px 0 0;color:var(--muted)}
-.detail{margin:14px 0 0;padding:14px 16px;background:var(--card);border-left:4px solid var(--amber)}
-.detail p{margin:0 0 8px}
-.detail p:last-child{margin:0}
-.detail strong{font-weight:600}
-.btn{display:block;margin-top:14px;padding:16px 18px;background:var(--rust);color:#fff;text-decoration:none;font-family:"Barlow Condensed";font-weight:800;font-size:24px;text-align:center;border-radius:6px}
-.btn:hover,.btn:focus-visible{background:var(--rust-dark);outline:3px solid var(--amber);outline-offset:2px}
-.btn small{display:block;font-family:Barlow;font-weight:400;font-size:14px;opacity:.9;margin-top:2px}
-.note{margin:12px 0 0;font-size:15px;color:var(--muted)}
-.opts{display:grid;gap:10px;margin-top:12px}
-.opt{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:6px}
-.opt b{font-family:"Barlow Condensed";font-size:22px;font-weight:800;display:block}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+main{max-width:660px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+h1,h2{font-family:var(--display);line-height:.95;margin:0;text-wrap:balance;font-weight:800}
+
+/* hero */
+.hero{padding-block:44px 28px;border-bottom:2px solid var(--line);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin:0}
+.title{--t:clamp(48px,13vw,84px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+.hero h1{font-size:var(--t);letter-spacing:.005em}
+.hero h1 span{color:var(--mint)}
+.emblem{display:block;height:calc(var(--t) * 1.9);width:auto;aspect-ratio:184/176;max-width:38vw;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45))}
+.welcome{margin:0;font-size:19px;max-width:34em}
+.how{margin:0;color:var(--muted)}
+.dates{justify-self:start;padding:5px 12px;background:var(--brass);color:var(--bg);font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.02em;border-radius:3px}
+
+.fine{margin:0;font-size:13px;line-height:1.45;color:var(--muted);font-style:italic;max-width:40em}
+.fine b{font-style:normal;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-right:4px}
+
+/* steps */
+section{padding-block:30px;border-bottom:1px solid var(--line);display:grid;gap:14px}
+.step{display:flex;gap:14px;align-items:center}
+.badge{width:52px;height:52px;flex:none;position:relative;display:grid;place-items:center}
+.badge svg{position:absolute;inset:0;width:100%;height:100%}
+.badge span{position:relative;font-family:var(--display);font-weight:800;font-size:26px;color:var(--on-mint);margin-top:6px}
+h2{font-size:38px}
+.lead{margin:0;color:var(--muted)}
+.detail{padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;display:grid;gap:10px}
+.detail p{margin:0}
+.detail strong{font-weight:600;color:var(--mint)}
+.code{font-family:var(--mono);font-size:15px}
+.btn{display:block;padding:15px 18px;background:var(--mint);color:var(--on-mint);text-decoration:none;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:.02em;text-align:center;border-radius:8px;line-height:1.1}
+.btn:hover{background:var(--mint-deep)}
+.btn:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.btn small{display:block;font-family:var(--body);font-weight:400;font-size:14px;letter-spacing:0;opacity:.85;margin-top:3px}
+.btn.alt{background:transparent;color:var(--fg);border:2px solid var(--line)}
+.btn.alt:hover{border-color:var(--mint)}
+.note{margin:0;font-size:15px;color:var(--muted)}
+.opt{padding:12px 14px;border:1px dashed var(--line);border-radius:8px}
+.opt b{font-family:var(--display);font-size:24px;font-weight:800;display:block;color:var(--fg)}
+
 /* checklist */
-.grid{display:grid;grid-template-columns:1fr repeat(3,52px) 36px;gap:0;margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card)}
-.grid>div{padding:10px 8px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-.grid>.name{justify-content:flex-start;padding-left:14px;font-weight:600}
-.grid>.hd{font-family:"Barlow Condensed";font-weight:800;font-size:16px;color:var(--muted);background:var(--bg)}
-.grid input[type=checkbox]{width:24px;height:24px;accent-color:var(--ok);cursor:pointer}
-.grid .x{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px}
-.add{display:flex;gap:8px;margin-top:12px}
-.add input{flex:1;padding:12px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
-.add button{padding:12px 16px;font-family:"Barlow Condensed";font-weight:800;font-size:20px;background:var(--ink);color:var(--bg);border:0;border-radius:6px;cursor:pointer}
-.status{font-size:14px;color:var(--muted);margin-top:10px;min-height:1.2em}
-footer{padding:28px 0 0;font-size:14px;color:var(--muted)}
-@media (max-width:420px){.grid{grid-template-columns:1fr repeat(3,44px) 32px}.grid>.hd{font-size:14px}}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,54px) 38px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.grid>div{padding:10px 6px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-width:0}
+.grid>.name{justify-content:flex-start;padding-left:14px;font-weight:600;overflow-wrap:anywhere}
+.grid>.hd{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+.grid input[type=checkbox]{width:24px;height:24px;accent-color:var(--mint);cursor:pointer}
+.grid .x{background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 8px}
+.grid .x:focus-visible,.grid input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.add{display:flex;gap:8px}
+.add input{flex:1;min-width:0;padding:12px;font:inherit;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg)}
+.add input:focus-visible{outline:2px solid var(--mint);outline-offset:1px}
+.add button{padding:12px 18px;font-family:var(--display);font-weight:800;font-size:22px;background:var(--brass);color:var(--bg);border:0;border-radius:8px;cursor:pointer}
+.add button:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.status{font-size:14px;color:var(--muted);min-height:1.2em}
+footer{padding-top:28px;font-size:14px;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:minmax(0,1fr) repeat(3,44px) 32px}}
 </style>
 </head>
 <body>
 <main>
 <header class="hero">
-  <h1>Vegas, SEMA, Grand Canyon.</h1>
-  <p>Everyone books their own flight, room and tickets. Use the buttons below so we all land on the same flights and the same hotel, then tick yourself off at the bottom.</p>
+  <p class="eyebrow">Vegas · SEMA · Grand Canyon</p>
+  <div class="title">
+    <h1>Cuco's 60th <span>birthday plan</span></h1>
+    <svg class="emblem" viewBox="8 6 184 176" role="img" aria-label="Gold rotor badge reading 60th Birthday, Cuco">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".45" stop-color="var(--gold)"/><stop offset=".7" stop-color="var(--gold-hi)"/><stop offset="1" stop-color="var(--gold-lo)"/>
+        </linearGradient>
+        <path id="arc" d="M52 101Q100 113 148 101"/>
+      </defs>
+      <path d="M16 30A200 200 0 0 1 184 30A200 200 0 0 1 100 178A200 200 0 0 1 16 30Z" fill="url(#gold)" stroke="var(--gold-lo)" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M16 30A200 200 0 0 1 184 30A200 200 0 0 1 100 178A200 200 0 0 1 16 30Z" transform="translate(100 82) scale(.9) translate(-100 -82)" fill="none" stroke="var(--gold-hi)" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
+      <circle cx="100" cy="82" r="57" fill="var(--enamel)" stroke="var(--gold-hi)" stroke-width="3"/>
+      <circle cx="100" cy="82" r="52" fill="none" stroke="var(--gold)" stroke-width="1"/>
+      <circle cx="100" cy="82" r="47" fill="none" stroke="var(--gold)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6.15"/>
+      <g fill="var(--gold-hi)" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-weight="700" transform="translate(100 0) scale(.8 1) skewX(-8) translate(-100 0)">
+        <text x="100" y="86" text-anchor="middle" font-size="46">60</text>
+        <text x="128" y="70" font-size="21">th</text>
+      </g>
+      <text fill="var(--gold-hi)" font-family="Bodoni Moda, Didot, Times New Roman, serif" font-weight="700" font-size="11.5" letter-spacing="1.2" text-anchor="middle"><textPath href="#arc" startOffset="50%">BIRTHDAY</textPath></text>
+      <text x="100" y="124" text-anchor="middle" fill="#E9E6E0" font-family="Barlow, Arial, sans-serif" font-style="italic" font-weight="700" font-size="14" letter-spacing="2">CUCO</text>
+    </svg>
+  </div>
+  <p class="welcome">Hi everyone, thanks for choosing to celebrate my dad's 60th birthday with us in Vegas! I built this booking page to make it easy to find the flight, hotel and ticket info.</p>
+  <p class="how">Everyone books their own. Use the buttons below so we all end up on the same flights and in the same hotel, then tick yourself off at the bottom.</p>
   <span class="dates">Thu Nov 5 to Sun Nov 8, 2026</span>
+
+  <p class="fine"><b>Disclaimer</b>Sorry for being late with planning this. I don't have my hands full at all with 3 kids, traveling for work, school finals, etc.</p>
 </header>
 
 <section>
-  <div class="step"><span class="num">1</span><h2>Flights</h2></div>
+  <div class="step"><span class="badge"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8A74 74 0 0 1 87 72A74 74 0 0 1 13 72A74 74 0 0 1 50 8Z" fill="var(--mint)"/></svg><span>1</span></span><h2>Flights</h2></div>
   <p class="lead">United, nonstop, Newark to Las Vegas. Book these exact two flights so we arrive and leave together. Round trip has been running around $409 a person.</p>
   <div class="detail">
-    <p><strong>Out, Thu Nov 5</strong><br>United 2175, departs EWR 6:55 PM, lands LAS 9:47 PM</p>
-    <p><strong>Back, Sun Nov 8</strong><br>United 1386, departs LAS 3:25 PM, lands EWR 11:25 PM</p>
+    <p><strong>Out, Thu Nov 5</strong><br><span class="code">UA 2175 · EWR 6:55 PM → LAS 9:47 PM</span></p>
+    <p><strong>Back, Sun Nov 8</strong><br><span class="code">UA 1386 · LAS 3:25 PM → EWR 11:25 PM</span></p>
   </div>
-  <a class="btn" href="https://www.united.com/en/us/fsr/choose-flights?f=EWR&t=LAS&d=2026-11-05&r=2026-11-08&tt=1&sc=7&px=1&taxng=1&clm=7&st=bestmatches" target="_blank" rel="noopener">Book on United<small>Opens EWR to LAS, Nov 5 to Nov 8, already filled in</small></a>
+  <a class="btn" href="https://www.united.com/en/us/fsr/choose-flights?f=EWR&amp;t=LAS&amp;d=2026-11-05&amp;r=2026-11-08&amp;tt=1&amp;sc=7&amp;px=1&amp;taxng=1&amp;clm=7&amp;st=bestmatches" target="_blank" rel="noopener">Book on United<small>Opens EWR to LAS, Nov 5 to Nov 8, already filled in</small></a>
   <p class="note">The afternoon return means we can sleep in and check out Sunday without rushing.</p>
 </section>
 
 <section>
-  <div class="step"><span class="num">2</span><h2>Hotel</h2></div>
+  <div class="step"><span class="badge"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8A74 74 0 0 1 87 72A74 74 0 0 1 13 72A74 74 0 0 1 50 8Z" fill="var(--mint)"/></svg><span>2</span></span><h2>Hotel</h2></div>
   <p class="lead">Harrah's Las Vegas. It sits right on the Monorail, which skips Strip traffic and drops us at the convention center doors.</p>
   <div class="detail">
     <p><strong>Thu Nov 5 to Sun Nov 8</strong>, 3 nights</p>
@@ -87,22 +146,18 @@ footer{padding:28px 0 0;font-size:14px;color:var(--muted)}
 </section>
 
 <section>
-  <div class="step"><span class="num">3</span><h2>SEMA tickets</h2></div>
+  <div class="step"><span class="badge"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8A74 74 0 0 1 87 72A74 74 0 0 1 13 72A74 74 0 0 1 50 8Z" fill="var(--mint)"/></svg><span>3</span></span><h2>SEMA tickets</h2></div>
   <p class="lead">The show floor opens to the public on Friday Nov 6, 9 AM to 4 PM. Buy in advance. Nothing is sold at the door.</p>
-  <div class="opts">
-    <div class="opt"><b>SEMA Show Friday, about $160 all in</b>Convention floor access. This is the one to buy. Skip the concert bundles.</div>
-  </div>
+  <div class="opt"><b>SEMA Show Friday, about $160 all in</b>Convention floor access. This is the one to buy. Skip the concert bundles.</div>
   <a class="btn" href="https://semafest.com" target="_blank" rel="noopener">Buy on semafest.com<small>Pick "SEMA Show Friday". Checkout runs through Tixr</small></a>
 </section>
 
 <section>
-  <div class="step"><span class="num">4</span><h2>Grand Canyon, Saturday</h2></div>
+  <div class="step"><span class="badge"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8A74 74 0 0 1 87 72A74 74 0 0 1 13 72A74 74 0 0 1 50 8Z" fill="var(--mint)"/></svg><span>4</span></span><h2>Grand Canyon, Saturday</h2></div>
   <p class="lead">We rent a full size SUV from the Hertz desk at The Venetian, next door to the hotel, and drive to the West Rim. About 2.5 hours each way. Rental cost gets split.</p>
-  <div class="opts">
-    <div class="opt"><b>General Admission, about $77</b>Rim views and the shuttle between points. This is all we need. Skip the All Access Pass.</div>
-  </div>
+  <div class="opt"><b>General Admission, about $77</b>Rim views and the shuttle between points. This is all we need. Skip the All Access Pass.</div>
   <a class="btn" href="https://grandcanyonwest.com/tickets" target="_blank" rel="noopener">West Rim tickets<small>Optional. You can also buy at the gate when we arrive</small></a>
-  <a class="btn" href="https://www.hertz.com/us/en/location/unitedstates/nevada/lasvegas/lasc07" target="_blank" rel="noopener" style="background:var(--ink);color:var(--bg)">Hertz at The Venetian<small>For reference. One person books the SUV</small></a>
+  <a class="btn alt" href="https://www.hertz.com/us/en/location/unitedstates/nevada/lasvegas/lasc07" target="_blank" rel="noopener">Hertz at The Venetian<small>For reference. One person books the SUV</small></a>
 </section>
 
 <section>
@@ -110,18 +165,18 @@ footer{padding:28px 0 0;font-size:14px;color:var(--muted)}
   <p class="lead">Add your name, then tick each box as you book. Everyone sees the same list.</p>
   <div class="grid" id="grid"></div>
   <div class="add">
-    <input id="newName" type="text" placeholder="Your name" maxlength="30" autocomplete="off">
+    <input id="newName" type="text" placeholder="Your name" maxlength="30" autocomplete="off" aria-label="Your name">
     <button id="addBtn" type="button">Add me</button>
   </div>
-  <div class="status" id="status"></div>
+  <div class="status" id="status" role="status"></div>
 </section>
 
 <footer>Prices are what things were running when this page was made and can move. Each site shows the final number at checkout.</footer>
 </main>
 
 <script>
+// Shared checklist, saved to the Google Sheet.
 (function(){
-  // Paste your Apps Script web app URL between the quotes.
   var API = 'https://script.google.com/macros/s/AKfycbxDlqQtD8XJ_3KskVhabspOuXJZy7ixZjgzTI92HKZV80pLyJGUrqpOFE66ar77nVPrwQ/exec';
 
   var state = {people:[]};
@@ -144,7 +199,6 @@ footer{padding:28px 0 0;font-size:14px;color:var(--muted)}
   }
 
   function load(){
-    if(API.indexOf('http')!==0){ status.textContent = 'The page is not connected to its sheet yet.'; return; }
     status.textContent = 'Loading the list...';
     fetch(API + '?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
       state.people = d.people || []; render(); status.textContent = '';
