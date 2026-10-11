@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vegas / SEMA 2026, Nov 5 to 8</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F3EBDD; --ink:#1E2238; --muted:#5C5F72; --rust:#B4502A; --rust-dark:#8E3C1E;
+  --amber:#E9A83A; --line:#D9CDB8; --card:#FBF7EE; --ok:#2E7D4F;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#171A2B; --ink:#F3EBDD; --muted:#B3B0C2; --line:#2F3350; --card:#20243A; --rust:#D9693F; --rust-dark:#B4502A;
+}}
+:root[data-theme="dark"]{ --bg:#171A2B; --ink:#F3EBDD; --muted:#B3B0C2; --line:#2F3350; --card:#20243A; --rust:#D9693F; --rust-dark:#B4502A; }
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:0 20px 64px}
+h1,h2,h3{font-family:"Barlow Condensed",Barlow,Impact,sans-serif;line-height:1;margin:0}
+.hero{padding:40px 0 24px;border-bottom:3px solid var(--ink)}
+.hero h1{font-size:clamp(52px,14vw,88px);font-weight:800;letter-spacing:-.01em}
+.hero p{margin:12px 0 0;font-size:19px;max-width:30em}
+.dates{display:inline-block;margin-top:14px;padding:6px 12px;background:var(--amber);color:#1E2238;font-family:"Barlow Condensed";font-weight:800;font-size:20px;letter-spacing:.01em}
+section{padding:28px 0;border-bottom:1px solid var(--line)}
+.step{display:flex;gap:14px;align-items:baseline}
+.num{font-family:"Barlow Condensed";font-weight:800;font-size:44px;color:var(--rust);line-height:1;min-width:40px}
+h2{font-size:34px;font-weight:800}
+.lead{margin:10px 0 0;color:var(--muted)}
+.detail{margin:14px 0 0;padding:14px 16px;background:var(--card);border-left:4px solid var(--amber)}
+.detail p{margin:0 0 8px}
+.detail p:last-child{margin:0}
+.detail strong{font-weight:600}
+.btn{display:block;margin-top:14px;padding:16px 18px;background:var(--rust);color:#fff;text-decoration:none;font-family:"Barlow Condensed";font-weight:800;font-size:24px;text-align:center;border-radius:6px}
+.btn:hover,.btn:focus-visible{background:var(--rust-dark);outline:3px solid var(--amber);outline-offset:2px}
+.btn small{display:block;font-family:Barlow;font-weight:400;font-size:14px;opacity:.9;margin-top:2px}
+.note{margin:12px 0 0;font-size:15px;color:var(--muted)}
+.opts{display:grid;gap:10px;margin-top:12px}
+.opt{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:6px}
+.opt b{font-family:"Barlow Condensed";font-size:22px;font-weight:800;display:block}
+/* checklist */
+.grid{display:grid;grid-template-columns:1fr repeat(3,52px) 36px;gap:0;margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card)}
+.grid>div{padding:10px 8px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.grid>.name{justify-content:flex-start;padding-left:14px;font-weight:600}
+.grid>.hd{font-family:"Barlow Condensed";font-weight:800;font-size:16px;color:var(--muted);background:var(--bg)}
+.grid input[type=checkbox]{width:24px;height:24px;accent-color:var(--ok);cursor:pointer}
+.grid .x{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px}
+.add{display:flex;gap:8px;margin-top:12px}
+.add input{flex:1;padding:12px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.add button{padding:12px 16px;font-family:"Barlow Condensed";font-weight:800;font-size:20px;background:var(--ink);color:var(--bg);border:0;border-radius:6px;cursor:pointer}
+.status{font-size:14px;color:var(--muted);margin-top:10px;min-height:1.2em}
+footer{padding:28px 0 0;font-size:14px;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr repeat(3,44px) 32px}.grid>.hd{font-size:14px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <h1>Vegas, SEMA, Grand Canyon.</h1>
+  <p>Everyone books their own flight, room and tickets. Use the buttons below so we all land on the same flights and the same hotel, then tick yourself off at the bottom.</p>
+  <span class="dates">Thu Nov 5 to Sun Nov 8, 2026</span>
+</header>
+
+<section>
+  <div class="step"><span class="num">1</span><h2>Flights</h2></div>
+  <p class="lead">United, nonstop, Newark to Las Vegas. Book these exact two flights so we arrive and leave together. Round trip has been running around $409 a person.</p>
+  <div class="detail">
+    <p><strong>Out, Thu Nov 5</strong><br>United 2175, departs EWR 6:55 PM, lands LAS 9:47 PM</p>
+    <p><strong>Back, Sun Nov 8</strong><br>United 1386, departs LAS 3:25 PM, lands EWR 11:25 PM</p>
+  </div>
+  <a class="btn" href="https://www.united.com/en/us/fsr/choose-flights?f=EWR&t=LAS&d=2026-11-05&r=2026-11-08&tt=1&sc=7&px=1&taxng=1&clm=7&st=bestmatches" target="_blank" rel="noopener">Book on United<small>Opens EWR to LAS, Nov 5 to Nov 8, already filled in</small></a>
+  <p class="note">The afternoon return means we can sleep in and check out Sunday without rushing.</p>
+</section>
+
+<section>
+  <div class="step"><span class="num">2</span><h2>Hotel</h2></div>
+  <p class="lead">Harrah's Las Vegas. It sits right on the Monorail, which skips Strip traffic and drops us at the convention center doors.</p>
+  <div class="detail">
+    <p><strong>Thu Nov 5 to Sun Nov 8</strong>, 3 nights</p>
+    <p>About $877 total per room after taxes and resort fees. Pair up and split a two queen room.</p>
+  </div>
+  <a class="btn" href="https://www.caesars.com/harrahs-las-vegas" target="_blank" rel="noopener">Book at Harrah's<small>Enter Nov 5 check in, Nov 8 check out</small></a>
+</section>
+
+<section>
+  <div class="step"><span class="num">3</span><h2>SEMA tickets</h2></div>
+  <p class="lead">The show floor opens to the public on Friday Nov 6, 9 AM to 4 PM. Buy in advance. Nothing is sold at the door.</p>
+  <div class="opts">
+    <div class="opt"><b>SEMA Show Friday, about $160 all in</b>Convention floor access. This is the one to buy. Skip the concert bundles.</div>
+  </div>
+  <a class="btn" href="https://semafest.com" target="_blank" rel="noopener">Buy on semafest.com<small>Pick "SEMA Show Friday". Checkout runs through Tixr</small></a>
+</section>
+
+<section>
+  <div class="step"><span class="num">4</span><h2>Grand Canyon, Saturday</h2></div>
+  <p class="lead">We rent a full size SUV from the Hertz desk at The Venetian, next door to the hotel, and drive to the West Rim. About 2.5 hours each way. Rental cost gets split.</p>
+  <div class="opts">
+    <div class="opt"><b>General Admission, about $77</b>Rim views and the shuttle between points. This is all we need. Skip the All Access Pass.</div>
+  </div>
+  <a class="btn" href="https://grandcanyonwest.com/tickets" target="_blank" rel="noopener">West Rim tickets<small>Optional. You can also buy at the gate when we arrive</small></a>
+  <a class="btn" href="https://www.hertz.com/us/en/location/unitedstates/nevada/lasvegas/lasc07" target="_blank" rel="noopener" style="background:var(--ink);color:var(--bg)">Hertz at The Venetian<small>For reference. One person books the SUV</small></a>
+</section>
+
+<section>
+  <h2>Who's booked what</h2>
+  <p class="lead">Add your name, then tick each box as you book. Everyone sees the same list.</p>
+  <div class="grid" id="grid"></div>
+  <div class="add">
+    <input id="newName" type="text" placeholder="Your name" maxlength="30" autocomplete="off">
+    <button id="addBtn" type="button">Add me</button>
+  </div>
+  <div class="status" id="status"></div>
+</section>
+
+<footer>Prices are what things were running when this page was made and can move. Each site shows the final number at checkout.</footer>
+</main>
+
+<script>
+(function(){
+  // Paste your Apps Script web app URL between the quotes.
+  var API = 'https://script.google.com/macros/s/AKfycbxDlqQtD8XJ_3KskVhabspOuXJZy7ixZjgzTI92HKZV80pLyJGUrqpOFE66ar77nVPrwQ/exec';
+
+  var state = {people:[]};
+  var grid = document.getElementById('grid'), status = document.getElementById('status');
+  var cols = [['flight','Flight'],['hotel','Hotel'],['sema','SEMA']];
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function render(){
+    var h = '<div class="hd name">Name</div>';
+    cols.forEach(function(c){ h += '<div class="hd">'+c[1]+'</div>'; });
+    h += '<div class="hd"></div>';
+    if(!state.people.length){ h += '<div class="name" style="grid-column:1/-1;justify-content:center;color:var(--muted)">Nobody on the list yet. Add your name below.</div>'; }
+    state.people.forEach(function(p,i){
+      h += '<div class="name">'+esc(p.name)+'</div>';
+      cols.forEach(function(c){ h += '<div><input type="checkbox" data-i="'+i+'" data-k="'+c[0]+'"'+(p[c[0]]?' checked':'')+' aria-label="'+esc(p.name)+' '+c[1]+'"></div>'; });
+      h += '<div><button class="x" type="button" data-rm="'+i+'" aria-label="Remove '+esc(p.name)+'">&times;</button></div>';
+    });
+    grid.innerHTML = h;
+  }
+
+  function load(){
+    if(API.indexOf('http')!==0){ status.textContent = 'The page is not connected to its sheet yet.'; return; }
+    status.textContent = 'Loading the list...';
+    fetch(API + '?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+      state.people = d.people || []; render(); status.textContent = '';
+    }).catch(function(){ status.textContent = 'Could not load the list. Check your connection and reload.'; });
+  }
+
+  function send(op){
+    status.textContent = 'Saving...';
+    grid.style.opacity = '.5';
+    fetch(API, {method:'POST', body: JSON.stringify(op), headers:{'Content-Type':'text/plain;charset=utf-8'}})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d.error){ status.textContent = d.error; } else { state.people = d.people || []; status.textContent = 'Saved. Everyone sees this now.'; }
+        render(); grid.style.opacity = '';
+      })
+      .catch(function(){ status.textContent = 'Could not save. Reload and try again.'; grid.style.opacity = ''; load(); });
+  }
+
+  grid.addEventListener('change', function(e){
+    var t = e.target; if(t.type!=='checkbox') return;
+    var p = state.people[+t.dataset.i];
+    send({op:'toggle', name:p.name, key:t.dataset.k, value:t.checked});
+  });
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('[data-rm]'); if(!b) return;
+    var p = state.people[+b.dataset.rm];
+    if(confirm('Remove '+p.name+' from the list?')) send({op:'remove', name:p.name});
+  });
+  document.getElementById('addBtn').addEventListener('click', function(){
+    var inp = document.getElementById('newName'), n = inp.value.trim();
+    if(!n) { inp.focus(); return; }
+    inp.value=''; send({op:'add', name:n});
+  });
+  document.getElementById('newName').addEventListener('keydown', function(e){ if(e.key==='Enter') document.getElementById('addBtn').click(); });
+
+  render(); load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+// SEMA 2026 trip checklist backend.
+// Paste this into Extensions > Apps Script on a blank Google Sheet, then deploy as a web app.
+// Deploy settings: Execute as "Me", Who has access "Anyone".
+// Emails go to the Google account that deploys the script (you).
+
+var SHEET_NAME = 'Bookings';
+var KEYS = ['flight', 'hotel', 'sema'];
+var LABELS = { flight: 'Flight', hotel: 'Hotel', sema: 'SEMA ticket' };
+
+function getSheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(SHEET_NAME);
+  if (!sh) {
+    sh = ss.insertSheet(SHEET_NAME);
+    sh.appendRow(['Name', 'Flight', 'Hotel', 'SEMA', 'Last updated']);
+  }
+  return sh;
+}
+
+function readPeople_() {
+  var sh = getSheet_();
+  var rows = sh.getDataRange().getValues();
+  var people = [];
+  for (var i = 1; i < rows.length; i++) {
+    if (!rows[i][0]) continue;
+    people.push({
+      name: String(rows[i][0]),
+      flight: rows[i][1] === true || rows[i][1] === 'TRUE',
+      hotel: rows[i][2] === true || rows[i][2] === 'TRUE',
+      sema: rows[i][3] === true || rows[i][3] === 'TRUE'
+    });
+  }
+  return people;
+}
+
+function writePeople_(people) {
+  var sh = getSheet_();
+  sh.clearContents();
+  sh.appendRow(['Name', 'Flight', 'Hotel', 'SEMA', 'Last updated']);
+  var now = new Date();
+  people.forEach(function (p) {
+    // Leading apostrophe keeps names like "=..." as plain text instead of a formula.
+    sh.appendRow(["'" + p.name, !!p.flight, !!p.hotel, !!p.sema, now]);
+  });
+}
+
+function json_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet() {
+  return json_({ people: readPeople_() });
+}
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    var op = JSON.parse(e.postData.contents);
+    var people = readPeople_();
+    var name = String(op.name || '').trim().slice(0, 30);
+    var msg = '';
+
+    if (op.op === 'add') {
+      if (!name) return json_({ error: 'Name is required.', people: people });
+      var exists = people.some(function (p) { return p.name.toLowerCase() === name.toLowerCase(); });
+      if (exists) return json_({ error: name + ' is already on the list.', people: people });
+      people.push({ name: name, flight: false, hotel: false, sema: false });
+      msg = name + ' joined the list.';
+    } else if (op.op === 'toggle') {
+      if (KEYS.indexOf(op.key) < 0) return json_({ error: 'Unknown field.', people: people });
+      var hit = false;
+      people.forEach(function (p) { if (p.name === name) { p[op.key] = !!op.value; hit = true; } });
+      if (!hit) return json_({ error: name + ' is not on the list.', people: people });
+      msg = name + (op.value ? ' booked ' : ' un-ticked ') + LABELS[op.key] + '.';
+    } else if (op.op === 'remove') {
+      people = people.filter(function (p) { return p.name !== name; });
+      msg = name + ' was removed from the list.';
+    } else {
+      return json_({ error: 'Unknown action.', people: people });
+    }
+
+    writePeople_(people);
+    notify_(msg, people);
+    return json_({ people: people });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function notify_(msg, people) {
+  var lines = people.map(function (p) {
+    var done = KEYS.filter(function (k) { return p[k]; }).map(function (k) { return LABELS[k]; });
+    return p.name + ': ' + (done.length ? done.join(', ') : 'nothing yet');
+  });
+  var body = msg + '\n\nCurrent list\n' + lines.join('\n') + '\n\nSheet: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl();
+  MailApp.sendEmail(Session.getEffectiveUser().getEmail(), 'SEMA trip: ' + msg, body);
+}
